@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import AppLoading from 'expo-app-loading';
 
-import { Welcome } from './src/pages/Welcome';
+import Routes from './src/routes';
 import {
   useFonts,
   Jost_400Regular,
@@ -21,6 +21,6 @@ export default function App() {
     )
 
   return (
-    <Welcome />
+    <Routes />
   )
 }
