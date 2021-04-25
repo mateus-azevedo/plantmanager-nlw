@@ -6,6 +6,7 @@ import {
   FlatList,
   ActivityIndicator
 } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 import { Header } from '../components/Header';
 import { EnviromentButton } from '../components/EnviromentButton';
@@ -43,6 +44,8 @@ export function PlantSelect() {
 
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
+
+  const navigation = useNavigation();
 
   function handleEnviromentSelected(environment: string) {
     setEnviromentSelect(environment);
@@ -83,6 +86,10 @@ export function PlantSelect() {
     setLoadingMore(true);
     setPage(oldValue => oldValue + 1);
     fetchPlants();
+  }
+
+  function handlePlantSelect(plant: PlantProps) {
+    navigation.navigate('PlantSave');
   }
 
   useEffect(() => {
@@ -145,7 +152,10 @@ export function PlantSelect() {
           data={filteredPlants}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <PlantCardPrimary data={item} />
+            <PlantCardPrimary 
+              data={item}
+              onPress={() => handlePlantSelect(item)}
+            />
           )}
           showsVerticalScrollIndicator={false}
           numColumns={2}
