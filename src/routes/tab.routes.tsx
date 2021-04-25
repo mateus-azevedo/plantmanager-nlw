@@ -18,8 +18,9 @@ const AuthRoutes = () => {
         inactiveTintColor: colors.heading,
         labelPosition: 'beside-icon',
         style: {
-          paddingVertical: 20,
-          height: 88
+          paddingTop: 20,
+          paddingBottom: 20,
+          height: 70,
         }
       }}>
         <AppTab.Screen
